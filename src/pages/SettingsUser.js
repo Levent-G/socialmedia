@@ -9,12 +9,12 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+
 import SendIcon from "@mui/icons-material/Send";
 import { GetLikesAction } from "../redux/actions/LikesAction";
 import { getOneUserByToken } from "../redux/actions/UsersAction";
 import { updateUser } from "../redux/actions/UsersAction";
-import axios from "axios";
+
 import Popper from "@mui/material/Popper";
 
 function TabPanel(props) {
@@ -68,7 +68,7 @@ const SettingsUser = () => {
   const [settingUserName, setSettingUserName] = useState(null);
   const [settingEmail, setSettingEmail] = useState(null);
   const [settingAvatarUrl, setSettingAvatarUrl] = useState(null);
-  const [like, setLike] = useState(null);
+
   const [settingMessage, setSettingMessage] = useState(null);
 
   const token = localStorage.getItem("token");
@@ -101,6 +101,7 @@ const SettingsUser = () => {
       message: settingMessage,
       accessToken: token,
     });
+    console.log(resp);
   };
   // SETTING FUNCTION END -----------------------------------------------
 
@@ -246,6 +247,7 @@ const SettingsUser = () => {
                   <img
                     src={state.getoneuserstoken?.avatarUrl}
                     className="w-20 h-20 rounded "
+                    alt={state.getoneuserstoken?.userName}
                   />
                 </Box>
               </Popper>

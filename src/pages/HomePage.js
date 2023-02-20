@@ -5,6 +5,7 @@ import UserListComp from "../components/UserListComp";
 import PostCardComp from "../components/PostCardComp";
 import { useSelector, useDispatch } from "react-redux";
 import { GetPostsAction } from "../redux/actions/PostActions";
+
 const HomePage = () => {
   const token = localStorage.getItem("token");
   // GETPOST START--------------------------------------------------------------------
@@ -18,18 +19,20 @@ const HomePage = () => {
   return (
     <>
       {token ? (
-        <div className="m-5">
-          <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={3}>
-              <Grid>
-                <UserListComp />
+        <>
+          <div className="m-5">
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid container spacing={3}>
+                <Grid>
+                  <UserListComp />
+                </Grid>
+                <Grid className="text-center ml-auto mr-auto ">
+                  <PostCardComp state={state.posts} />
+                </Grid>
               </Grid>
-              <Grid className="text-center ml-auto mr-auto ">
-                <PostCardComp state={state.posts} />
-              </Grid>
-            </Grid>
-          </Box>
-        </div>
+            </Box>
+          </div>
+        </>
       ) : (
         ""
       )}

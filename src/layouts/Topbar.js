@@ -18,7 +18,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useSelector } from "react-redux";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { getOneUserByToken } from "../redux/actions/UsersAction";
 import { Logout } from "../redux/actions/LoginActions";
 
@@ -53,12 +54,9 @@ const Topbar = () => {
   const navigate = useNavigate();
   const logout = async (e) => {
     e.preventDefault();
-    console.log(
-      state.getoneuserstoken?.id,
-      "idddddddddd",
-      state.getoneuserstoken?.accessToken,
-      token
-    );
+    toast.error("Exit Success", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
     dispatch(Logout(state.getoneuserstoken?.id));
     await localStorage.removeItem("token");
     navigate("/");

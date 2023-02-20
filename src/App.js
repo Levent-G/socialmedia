@@ -7,10 +7,13 @@ import UserPage from "./pages/UserPage";
 import PostListPage from "./pages/PostListPage";
 import OnePostPage from "./pages/OnePostPage";
 import SettingsUser from "./pages/SettingsUser";
+import { ToastContainer } from "react-toastify";
+import SignUp from "./pages/SignUp";
 function App() {
   return (
     <div className="App">
       <>
+        <ToastContainer />
         <BrowserRouter>
           <Topbar />
           <Routes>
@@ -20,6 +23,7 @@ function App() {
             <Route path="/postlist" element={<PostListPage />}></Route>
             <Route path="/getonepost/:postId" element={<OnePostPage />} />
             <Route path="/settings" element={<SettingsUser />} />
+            <Route path="/signup" element={<SignUp />}></Route>
           </Routes>
           <BottomBar />
         </BrowserRouter>

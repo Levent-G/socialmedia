@@ -14,3 +14,10 @@ export const Logout = (id) => {
       .then((resp) => dispatch({ type: "PUT_LOGOUT", payload: resp.data }));
   };
 };
+export const Signup = (body) => {
+  return (dispatch) => {
+    axios
+      .post("/users", body)
+      .then((resp) => dispatch({ type: "POST_SIGNUP", payload: resp.data }));
+  };
+};

@@ -55,67 +55,71 @@ const BottomBar = () => {
   };
   return (
     <div>
-      <Box
-        sx={{ height: 320, flexGrow: 1 }}
-        className="fixed bottom-0 right-0 "
-      >
-        <SpeedDial
-          ariaLabel="SpeedDial basic example"
-          sx={{ position: "absolute", bottom: 16, right: 16 }}
-          onClick={handleOpen}
-          icon={<SpeedDialIcon />}
-        ></SpeedDial>
-
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+      {token ? (
+        <Box
+          sx={{ height: 320, flexGrow: 1 }}
+          className="fixed bottom-0 right-0 "
         >
-          <Box sx={style}>
-            <img
-              src={state.getoneuserstoken?.avatarUrl}
-              className="mr-5 w-11 h-11 float-left"
-              alt={state.getoneuserstoken?.userName}
-            />
-            <p className="font-bold text-xl">
-              {state.getoneuserstoken?.userName}
-            </p>
-            <form onSubmit={postFunction}>
-              <TextField
-                value={title}
-                margin="normal"
-                required
-                fullWidth
-                id="title"
-                label="Title Giriniz"
-                onChange={(e) => setTitle(e.target.value)}
-              />
+          <SpeedDial
+            ariaLabel="SpeedDial basic example"
+            sx={{ position: "absolute", bottom: 16, right: 16 }}
+            onClick={handleOpen}
+            icon={<SpeedDialIcon />}
+          ></SpeedDial>
 
-              <TextField
-                value={text}
-                margin="normal"
-                required
-                fullWidth
-                name="text"
-                label="foto url giriniz"
-                type="text"
-                id="text"
-                onChange={(e) => setText(e.target.value)}
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <img
+                src={state.getoneuserstoken?.avatarUrl}
+                className="mr-5 w-11 h-11 float-left"
+                alt={state.getoneuserstoken?.userName}
               />
+              <p className="font-bold text-xl">
+                {state.getoneuserstoken?.userName}
+              </p>
+              <form onSubmit={postFunction}>
+                <TextField
+                  value={title}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="title"
+                  label="Title Giriniz"
+                  onChange={(e) => setTitle(e.target.value)}
+                />
 
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Send Post
-              </Button>
-            </form>
-          </Box>
-        </Modal>
-      </Box>
+                <TextField
+                  value={text}
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="text"
+                  label="foto url giriniz"
+                  type="text"
+                  id="text"
+                  onChange={(e) => setText(e.target.value)}
+                />
+
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Send Post
+                </Button>
+              </form>
+            </Box>
+          </Modal>
+        </Box>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

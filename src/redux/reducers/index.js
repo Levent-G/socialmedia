@@ -24,4 +24,5 @@ export default combineReducers({
   sendpost: PostReducer,
   onepost: PostReducer,
   putuser: UsersReducer,
+  signupuser: LoginReducer,
 });

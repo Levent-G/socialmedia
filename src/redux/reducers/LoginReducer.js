@@ -4,6 +4,8 @@ const LoginReducer = (state = [], action) => {
       return { ...state, loginUser: action.payload };
     case "PUT_LOGOUT":
       return { ...state, logoutuser: action.payload };
+    case "POST_SIGNUP":
+      return { ...state, signupuser: action.payload };
 
     default:
       return state;
