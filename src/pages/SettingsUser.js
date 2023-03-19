@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
+import { getOneUserLikeCount } from "../redux/actions/UsersAction";
 import SendIcon from "@mui/icons-material/Send";
 import { GetLikesAction } from "../redux/actions/LikesAction";
 import { getOneUserByToken } from "../redux/actions/UsersAction";
@@ -106,12 +106,15 @@ const SettingsUser = () => {
   // SETTING FUNCTION END -----------------------------------------------
 
   // LİKELARI ÇEKME START ------------------------------------------------------------------------------------------------------
-  const stateLike = useSelector((stateLike) => stateLike.likes);
+  const stateLikeCount = useSelector(
+    (stateLikeCount) => stateLikeCount.getoneuserlikecount
+  );
 
-  const dispatchLike = useDispatch();
   useEffect(() => {
-    dispatchLike(GetLikesAction());
-  }, [dispatchLike]);
+    if (state.getoneuserstoken?.id) {
+      dispatch(getOneUserLikeCount(state.getoneuserstoken?.id));
+    }
+  }, [state.getoneuserstoken?.id, dispatch]);
   // LİKELARI ÇEKME END ------------------------------------------------------------------------------------------------------
   return (
     <Box
@@ -133,7 +136,7 @@ const SettingsUser = () => {
         <Tab label="Email Adress Change" {...a11yProps(1)} />
         <Tab label="Avatar Url Change" {...a11yProps(2)} />
         <Tab label="Message Change" {...a11yProps(3)} />
-        <Tab label="Likeladığın Gönderiler" {...a11yProps(4)} />
+        <Tab label="Like Count" {...a11yProps(4)} />
         <Tab label="Item Six" {...a11yProps(5)} />
         <Tab label="Item Seven" {...a11yProps(6)} />
       </Tabs>
@@ -307,19 +310,10 @@ const SettingsUser = () => {
           </form>
         </TabPanel>
         <TabPanel value={value} index={4}>
-          {stateLike.likes?.map((likes) => (
-            <>
-              {likes?.userId === state.getoneuserstoken?.id ? (
-                <>
-                  <IconButton aria-label="add to favorites">
-                    <FavoriteIcon className="text-red-600" />
-                  </IconButton>
-                </>
-              ) : (
-                ""
-              )}
-            </>
-          ))}
+          {stateLikeCount.getoneuserlikecount}
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon className="text-red-600" />
+          </IconButton>
         </TabPanel>
         <TabPanel value={value} index={5}>
           Item Six

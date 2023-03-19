@@ -32,3 +32,31 @@ export const updateUser = (id, body) => {
       .then((resp) => dispatch({ type: "PUT_UPDATEUSER", payload: resp.data }));
   };
 };
+
+export const getOneUserPostCount = (userId) => {
+  return (dispatch) => {
+    axios
+      .get(`/posts/postcount/${userId}`)
+      .then((resp) =>
+        dispatch({ type: "GET_ONEUSERPOSTCOUNT", payload: resp.data })
+      );
+  };
+};
+export const getOneUserLikeCount = (userId) => {
+  return (dispatch) => {
+    axios
+      .get(`/like/likecount/${userId}`)
+      .then((resp) =>
+        dispatch({ type: "GET_ONEUSERLIKECOUNT", payload: resp.data })
+      );
+  };
+};
+export const getOneUserCommentCount = (userId) => {
+  return (dispatch) => {
+    axios
+      .get(`/comments/commentcount/${userId}`)
+      .then((resp) =>
+        dispatch({ type: "GET_ONEUSERCOMMENTCOUNT", payload: resp.data })
+      );
+  };
+};

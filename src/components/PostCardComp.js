@@ -2,7 +2,6 @@ import React from "react";
 import CardMedia from "@mui/material/CardMedia";
 import Card from "@mui/material/Card";
 import Avatar from "@mui/material/Avatar";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import CommentIcon from "@mui/icons-material/Comment";
@@ -17,8 +16,6 @@ const PostCardComp = (props) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  const stateUser = useSelector((stateUser) => stateUser.getoneuserstoken);
 
   return (
     <>
@@ -55,19 +52,16 @@ const PostCardComp = (props) => {
                   <br />
                 </div>
                 <div className="float-left">
-                  <LikeComp
-                    postsId={posts?.id}
-                    userId={stateUser.getoneuserstoken?.id}
-                  />
+                  <LikeComp postsId={posts?.id} userId={props.tokenUser?.id} />
                 </div>
                 <div className="float-left">
                   <ShareComp
                     title={posts?.title}
                     text={posts?.text}
-                    userId={stateUser.getoneuserstoken?.id}
+                    userId={props.tokenUser?.id}
                   />
                 </div>
-                <div className="float-left w-full text-left">
+                <div className="float-left text-left">
                   <IconButton aria-label="comment">
                     <CommentIcon
                       expand={expanded}
@@ -76,10 +70,7 @@ const PostCardComp = (props) => {
                     ></CommentIcon>
                   </IconButton>
                   <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    <CommentComp
-                      postsId={posts?.id}
-                      user={stateUser.getoneuserstoken}
-                    />
+                    <CommentComp postsId={posts?.id} user={props.tokenUser} />
                   </Collapse>
                 </div>
               </Card>

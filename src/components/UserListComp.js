@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
@@ -8,19 +8,12 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
-import { UsersAction } from "../redux/actions/UsersAction";
-import { useSelector, useDispatch } from "react-redux";
-const UserListComp = () => {
-  const state = useSelector((state) => state.getusers);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(UsersAction());
-  }, [dispatch]);
+const UserListComp = (props) => {
   return (
     <div className="mt-5">
       <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-        {state.getusers
-          ? state.getusers.map((users) => (
+        {props.state
+          ? props.state.map((users) => (
               <>
                 <ListItem alignItems="flex-start">
                   <Link to={`/getoneuser/${users?.id}`} variant="body2">

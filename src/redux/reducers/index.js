@@ -25,4 +25,7 @@ export default combineReducers({
   onepost: PostReducer,
   putuser: UsersReducer,
   signupuser: LoginReducer,
+  getoneuserpostcount: UsersReducer,
+  getoneuserlikecount: UsersReducer,
+  getoneusercommentcount: UsersReducer,
 });

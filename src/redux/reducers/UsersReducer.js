@@ -8,6 +8,12 @@ const UsersReducer = (state = [], action) => {
       return { ...state, getoneuserstoken: action.payload };
     case "PUT_UPDATEUSER":
       return { ...state, putuser: action.payload };
+    case "GET_ONEUSERPOSTCOUNT":
+      return { ...state, getoneuserpostcount: action.payload };
+    case "GET_ONEUSERLIKECOUNT":
+      return { ...state, getoneuserlikecount: action.payload };
+    case "GET_ONEUSERCOMMENTCOUNT":
+      return { ...state, getoneusercommentcount: action.payload };
     default:
       return state;
   }
