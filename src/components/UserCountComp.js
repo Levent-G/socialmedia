@@ -39,7 +39,7 @@ const UserCountComp = (props) => {
       dispatch(getOneUserCommentCount(userId));
     }
   }, [userId, dispatch]);
-  console.log(statePostCount.getoneuserpostcount);
+
   return (
     <div>
       <IconButton aria-label="add to favorites">

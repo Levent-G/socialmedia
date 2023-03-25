@@ -6,6 +6,7 @@ import UsersReducer from "../reducers/UsersReducer";
 import PostReducer from "../reducers/PostReducer";
 import ShareReducers from "../reducers/ShareReducers";
 import CommentReducers from "../reducers/CommentReducers";
+import FollowReducers from "../reducers/FollowReducers";
 
 export default combineReducers({
   loginUser: LoginReducer,
@@ -28,4 +29,7 @@ export default combineReducers({
   getoneuserpostcount: UsersReducer,
   getoneuserlikecount: UsersReducer,
   getoneusercommentcount: UsersReducer,
+  getfollows: FollowReducers,
+  postfollows: FollowReducers,
+  followcontrol: FollowReducers,
 });

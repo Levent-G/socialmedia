@@ -9,6 +9,8 @@ import OnePostPage from "./pages/OnePostPage";
 import SettingsUser from "./pages/SettingsUser";
 import { ToastContainer } from "react-toastify";
 import SignUp from "./pages/SignUp";
+import ChatPage from "./pages/ChatPage";
+
 function App() {
   return (
     <div className="App">
@@ -24,6 +26,7 @@ function App() {
             <Route path="/getonepost/:postId" element={<OnePostPage />} />
             <Route path="/settings" element={<SettingsUser />} />
             <Route path="/signup" element={<SignUp />}></Route>
+            <Route path="/chat" element={<ChatPage />}></Route>
           </Routes>
           <BottomBar />
         </BrowserRouter>

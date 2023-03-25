@@ -134,6 +134,11 @@ const Topbar = () => {
                       Post List
                     </a>
                   </li>
+                  <li className="text-white mr-3 hover:opacity-75">
+                    <a className="cursor-pointer hover:opacity-75" href="/chat">
+                      Chat
+                    </a>
+                  </li>
                 </ul>
               </Box>
 

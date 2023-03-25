@@ -13,6 +13,7 @@ const LikeComp = (props) => {
   useEffect(() => {
     dispatchLike(GetLikesAction());
   }, [dispatchLike]);
+
   // LİKE GET END ------------------------------------------------------------------------------------------------------
 
   // LIKLE POST START--------------------------------------------

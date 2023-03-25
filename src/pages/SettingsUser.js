@@ -11,7 +11,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { getOneUserLikeCount } from "../redux/actions/UsersAction";
 import SendIcon from "@mui/icons-material/Send";
-import { GetLikesAction } from "../redux/actions/LikesAction";
+
 import { getOneUserByToken } from "../redux/actions/UsersAction";
 import { updateUser } from "../redux/actions/UsersAction";
 

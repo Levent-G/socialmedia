@@ -11,7 +11,10 @@ import { Link } from "react-router-dom";
 const UserListComp = (props) => {
   return (
     <div className="mt-5">
-      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+      <List
+        sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+        key=""
+      >
         {props.state
           ? props.state.map((users) => (
               <>

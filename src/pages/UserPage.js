@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 import UserCountComp from "../components/UserCountComp";
+import Follow from "../components/Follow";
 const UserPage = () => {
   const { userId } = useParams();
   const state = useSelector((state) => state.getoneusers);
@@ -57,16 +58,17 @@ const UserPage = () => {
         </Typography>
       </div>
 
-      <div>
+      <div className="ml-5">
         <Typography className=" float-left text-gray-500">
           {state.getoneusers?.message}{" "}
         </Typography>
         <br />
         <UserCountComp userId={userId} />
         {userId != stateToken.getoneuserstoken.id ? (
-          <Button type="submit" variant="contained">
-            Takip Et
-          </Button>
+          <Follow
+            takipEdilen={userId}
+            takipEden={stateToken.getoneuserstoken.id}
+          />
         ) : (
           ""
         )}
