@@ -10,14 +10,15 @@ import { Link } from "react-router-dom";
 
 const UserListComp = (props) => {
   return (
-    <div className="mt-5">
+    <div>
       <List
         sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
         key=""
+        className="mt-5"
       >
         {props.state
-          ? props.state.map((users) => (
-              <>
+          ? props.state.map((users, index1) => (
+              <div key={index1}>
                 <ListItem alignItems="flex-start">
                   <Link to={`/getoneuser/${users?.id}`} variant="body2">
                     <ListItemAvatar>
@@ -42,7 +43,7 @@ const UserListComp = (props) => {
                   />
                 </ListItem>
                 <Divider variant="inset" component="li" />
-              </>
+              </div>
             ))
           : ""}
       </List>

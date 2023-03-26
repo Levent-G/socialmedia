@@ -39,21 +39,15 @@ export default function Login() {
   };
   const loginFunction = async (e) => {
     e.preventDefault();
-    await loginFunctionApi({ email, password });
-
-    if (
-      state.loginUser?.accessToken !== null &&
-      state.loginUser?.status === "ok"
-    ) {
-      toast.success("Success", {
+    try {
+      await loginFunctionApi({ email, password });
+      toast.success("Login Başarılı", {
         position: toast.POSITION.TOP_RIGHT,
       });
-      await localStorage.setItem("token", state.loginUser?.accessToken);
-
+      await localStorage.setItem("token", state.loginUser.accessToken);
       navigate("/homepage");
-    } else {
-      console.log("başarısız");
-      toast.error("Password error", {
+    } catch (error) {
+      toast.error(error, {
         position: toast.POSITION.TOP_RIGHT,
       });
     }

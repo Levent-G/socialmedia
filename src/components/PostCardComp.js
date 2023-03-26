@@ -20,8 +20,8 @@ const PostCardComp = (props) => {
   return (
     <>
       {props.state
-        ? props.state.map((posts) => (
-            <>
+        ? props.state.map((posts, index) => (
+            <div key={index}>
               <Card className="m-5" sx={{ maxWidth: 755 }}>
                 <div>
                   <CardMedia
@@ -62,10 +62,9 @@ const PostCardComp = (props) => {
                   />
                 </div>
                 <div className="float-left text-left">
-                  <IconButton aria-label="comment">
+                  <IconButton aria-label="comment" onClick={handleExpandClick}>
                     <CommentIcon
                       expand={expanded}
-                      onClick={handleExpandClick}
                       aria-expanded={expanded}
                     ></CommentIcon>
                   </IconButton>
@@ -74,7 +73,7 @@ const PostCardComp = (props) => {
                   </Collapse>
                 </div>
               </Card>
-            </>
+            </div>
           ))
         : ""}
     </>

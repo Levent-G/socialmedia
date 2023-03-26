@@ -18,14 +18,16 @@ const Follow = (props) => {
 
   useEffect(() => {
     dispatch(followControl(props.takipEden, props.takipEdilen));
-  }, [dispatch]);
+  }, [props.takipEden, props.takipEdilen, dispatch]);
 
   function followFunction(takipEdilen, takipEden, status) {
+    setStatus("olumlu");
     const followResp = createFollows({
       status: status,
       takipEdilen: takipEdilen,
       takipEden: takipEden,
     });
+    console.log(followResp);
   }
   const createFollows = async (body) => {
     try {
@@ -42,6 +44,7 @@ const Follow = (props) => {
 
   function deleteFollowFunction(id) {
     const followResp = deleteFollowApi(id);
+    console.log(followResp);
   }
   const deleteFollowApi = async (id) => {
     try {
@@ -71,7 +74,7 @@ const Follow = (props) => {
           </>
         </>
       ))}
-      {console.log(state.followcontrol, "takipEdenee")}
+
       {state.followcontrol?.length === 0 ? (
         <>
           <Button

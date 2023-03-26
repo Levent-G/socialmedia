@@ -22,8 +22,8 @@ const PostListPage = () => {
     <div>
       <ImageList sx={{ width: 1000 }} className="ml-auto mr-auto mt-5">
         {state.posts
-          ? state.posts.map((posts) => (
-              <Link to={`/getonepost/${posts?.id}`} variant="body2">
+          ? state.posts.map((posts, index) => (
+              <Link to={`/getonepost/${posts?.id}`} variant="body2" key={index}>
                 <ImageListItem key={posts?.text}>
                   <img
                     src={posts?.text}

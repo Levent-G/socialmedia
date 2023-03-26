@@ -31,19 +31,19 @@ const LikeComp = (props) => {
 
   return (
     <div>
-      {stateLike.likes?.map((likes) => (
-        <>
+      {stateLike.likes?.map((likes, index) => (
+        <div key={index} className="float-left">
           {likes?.userId === props.userId &&
           likes?.postId === props?.postsId ? (
-            <>
+            <div>
               <IconButton aria-label="add to favorites">
-                <FavoriteIcon className="text-red-600" />
+                <FavoriteIcon className="text-red-600 " />
               </IconButton>
-            </>
+            </div>
           ) : (
             ""
           )}
-        </>
+        </div>
       ))}
       <IconButton
         aria-label="add to favorites"

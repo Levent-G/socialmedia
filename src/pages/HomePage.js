@@ -31,7 +31,7 @@ const HomePage = () => {
     <>
       {token ? (
         <>
-          <div className="m-5">
+          <div className="m-5" expand="false">
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={3}>
                 <Grid>
