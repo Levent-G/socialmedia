@@ -1,7 +1,8 @@
 import React from "react";
 import ShareIcon from "@mui/icons-material/Share";
 import { useDispatch } from "react-redux";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { sharePost } from "../redux/actions/ShareAction";
 import IconButton from "@mui/material/IconButton";
 
@@ -18,7 +19,16 @@ const ShareComp = (props) => {
     console.log(LikeResp);
   }
   const sharePostApi = async (body) => {
-    dispatch(sharePost(body));
+    try {
+      dispatch(sharePost(body));
+      toast.success("Arkadaşının Postu Paylaşıldı ", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } catch (error) {
+      toast.error(error, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
 
   // SHARE POST END -------------------------------------------

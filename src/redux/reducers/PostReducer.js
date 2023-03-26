@@ -1,4 +1,12 @@
-const PostReducers = (state = [], action) => {
+const initialState = {
+  posts: [],
+  getoneuserpost: [],
+  deletepost: [],
+  sendpost: [],
+  onepost: [],
+};
+
+const PostReducers = (state = initialState, action) => {
   switch (action.type) {
     case "GET_POSTS":
       return { ...state, posts: action.payload };

@@ -7,7 +7,8 @@ import { useDispatch } from "react-redux";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { useSelector } from "react-redux";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { getOneUserByToken } from "../redux/actions/UsersAction";
 import { sendPost } from "../redux/actions/PostActions";
 const style = {
@@ -40,12 +41,18 @@ const BottomBar = () => {
   const postFunctionApi = async (body) => {
     try {
       dispatch(sendPost(body));
-    } catch {
-      console.log(" Başarısız!!!!!");
+      toast.success("Post Başarılı", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } catch (error) {
+      toast.error(error, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
   };
   const postFunction = async (e) => {
     e.preventDefault();
+
     await postFunctionApi({
       title: title,
       text: text,

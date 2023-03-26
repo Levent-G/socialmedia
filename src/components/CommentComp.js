@@ -7,7 +7,8 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { GetComments } from "../redux/actions/CommentAction";
 import { commentPost } from "../redux/actions/CommentAction";
 const CommentComp = (props) => {
@@ -32,7 +33,16 @@ const CommentComp = (props) => {
     console.log(resp2);
   }
   const commentPostApi = async (body) => {
-    dispatch(commentPost(body));
+    try {
+      dispatch(commentPost(body));
+      toast.success("Post Başarılı", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } catch (error) {
+      toast.error(error, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
 
   // COMMENTS POST END -------------------------------------------
