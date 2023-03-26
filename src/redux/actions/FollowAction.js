@@ -23,3 +23,30 @@ export const followControl = (takipEden, takipEdilen) => {
       );
   };
 };
+export const deleteFolow = (id) => {
+  return (dispatch) => {
+    axios
+      .delete(`/follow/deletefollow?id=${id}`)
+      .then((resp) => dispatch({ type: "DELETE_FOLLOW", payload: resp.data }));
+  };
+};
+
+export const getFollowCount = (takipEdilen) => {
+  return (dispatch) => {
+    axios
+      .get(`/follow/followcount/${takipEdilen}`)
+      .then((resp) =>
+        dispatch({ type: "GET_FOLLOWCOUNT", payload: resp.data })
+      );
+  };
+};
+
+export const getFollowCountTakip = (takipEden) => {
+  return (dispatch) => {
+    axios
+      .get(`/follow/followcount2/${takipEden}`)
+      .then((resp) =>
+        dispatch({ type: "GET_FOLLOWCOUNTTAKIP", payload: resp.data })
+      );
+  };
+};

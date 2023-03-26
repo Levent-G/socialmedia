@@ -4,12 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 import { followControl } from "../redux/actions/FollowAction";
 import { createFollow } from "../redux/actions/FollowAction";
+import { deleteFolow } from "../redux/actions/FollowAction";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Follow = (props) => {
   const takipEdilen = props.takipEdilen;
   const takipEden = props.takipEden;
   const [status, setStatus] = useState("olumsuz");
 
   const state = useSelector((state) => state.followcontrol);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +28,32 @@ const Follow = (props) => {
     });
   }
   const createFollows = async (body) => {
-    dispatch(createFollow(body));
+    try {
+      dispatch(createFollow(body));
+      toast.success("Takip isteği atıldı", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } catch {
+      toast.error("Takip isteği atılamadı", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+  };
+
+  function deleteFollowFunction(id) {
+    const followResp = deleteFollowApi(id);
+  }
+  const deleteFollowApi = async (id) => {
+    try {
+      dispatch(deleteFolow(id));
+      toast.success("Takipten Çıkarıldı", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } catch {
+      toast.error("Takip çıkarılmadı", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
 
   return (
@@ -35,9 +64,9 @@ const Follow = (props) => {
             <Button
               type="submit"
               variant="contained"
-              onClick={() => followFunction(takipEdilen, takipEden, status)}
+              onClick={() => deleteFollowFunction(follow.id)}
             >
-              Takip Ediliyor
+              Takipten Çıkar
             </Button>
           </>
         </>

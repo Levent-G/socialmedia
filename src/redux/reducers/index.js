@@ -32,4 +32,7 @@ export default combineReducers({
   getfollows: FollowReducers,
   postfollows: FollowReducers,
   followcontrol: FollowReducers,
+  deletefollow: FollowReducers,
+  followcount: FollowReducers,
+  followcounttakip: FollowReducers,
 });

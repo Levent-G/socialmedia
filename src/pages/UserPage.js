@@ -44,7 +44,7 @@ const UserPage = () => {
         <p className="  pt-5 text-3xl">{state.getoneusers?.userName}</p>
 
         <Typography gutterBottom variant="h5" component="div">
-          {userId == stateToken.getoneuserstoken.id ? (
+          {userId == stateToken.getoneuserstoken?.id ? (
             <>
               <Link to={`/settings`} variant="body2">
                 <IconButton aria-label="settings">
@@ -64,10 +64,11 @@ const UserPage = () => {
         </Typography>
         <br />
         <UserCountComp userId={userId} />
-        {userId != stateToken.getoneuserstoken.id ? (
+        {userId != stateToken.getoneuserstoken?.id ? (
           <Follow
             takipEdilen={userId}
-            takipEden={stateToken.getoneuserstoken.id}
+            takipEden={stateToken.getoneuserstoken?.id}
+            userName={state.getoneusers?.userName}
           />
         ) : (
           ""
