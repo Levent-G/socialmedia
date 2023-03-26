@@ -6,6 +6,7 @@ import PostCardComp from "../components/PostCardComp";
 import { useSelector, useDispatch } from "react-redux";
 import { GetPostsAction } from "../redux/actions/PostActions";
 import { UsersAction } from "../redux/actions/UsersAction";
+import SearchUserPage from "../pages/SearchUserPage";
 const HomePage = () => {
   const token = localStorage.getItem("token");
   // GETPOST START--------------------------------------------------------------------
@@ -35,9 +36,11 @@ const HomePage = () => {
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={3}>
                 <Grid>
+                  <SearchUserPage />
                   <UserListComp state={stateUsers.getusers} />
                 </Grid>
                 <Grid className="text-center ml-auto mr-auto ">
+                  {console.log(state.posts, "posts")}
                   <PostCardComp
                     state={state.posts}
                     tokenUser={stateUser.getoneuserstoken}

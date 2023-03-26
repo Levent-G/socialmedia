@@ -1,9 +1,20 @@
-const FollowReducers = (state = [], action) => {
+const initialState = {
+  getfollows: [],
+  postfollows: [],
+  followcontrol: [],
+  deletefollow: [],
+  followcount: [],
+  followcounttakip: [],
+};
+const FollowReducers = (state = initialState, action) => {
   switch (action.type) {
     case "GET_FOLLOW":
       return { ...state, getfollows: action.payload };
     case "POST_FOLLOW":
-      return { ...state, postfollows: action.payload };
+      return {
+        ...state,
+        followcontrol: [...state.followcontrol, action.payload],
+      };
     case "GET_FOLLOWCONTROL":
       return { ...state, followcontrol: action.payload };
     case "DELETE_FOLLOW":

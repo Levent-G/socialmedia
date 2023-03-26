@@ -15,7 +15,7 @@ const PostReducers = (state = initialState, action) => {
     case "DELETE_POST":
       return { ...state, deletepost: action.payload };
     case "POST_SENDPOST":
-      return { ...state, sendpost: action.payload };
+      return { ...state, posts: [...state.posts, action.payload] };
     case "GET_ONEPOST":
       return { ...state, onepost: action.payload };
     default:

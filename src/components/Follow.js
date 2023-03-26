@@ -29,6 +29,7 @@ const Follow = (props) => {
     });
     console.log(followResp);
   }
+
   const createFollows = async (body) => {
     try {
       dispatch(createFollow(body));
@@ -49,7 +50,7 @@ const Follow = (props) => {
   const deleteFollowApi = async (id) => {
     try {
       dispatch(deleteFolow(id));
-      toast.success("Takipten Çıkarıldı", {
+      toast.error("Takipten Çıkarıldı", {
         position: toast.POSITION.TOP_RIGHT,
       });
     } catch {
@@ -61,8 +62,8 @@ const Follow = (props) => {
 
   return (
     <div>
-      {state.followcontrol?.map((follow) => (
-        <>
+      {state.followcontrol?.map((follow, index) => (
+        <div key={index}>
           <>
             <Button
               type="submit"
@@ -72,9 +73,12 @@ const Follow = (props) => {
               Takipten Çıkar
             </Button>
           </>
-        </>
+        </div>
       ))}
-
+      {console.log(
+        state.followcontrol,
+        "folowwwwwwwssssssssssssssssssssssssss"
+      )}
       {state.followcontrol?.length === 0 ? (
         <>
           <Button

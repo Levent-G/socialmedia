@@ -4,9 +4,7 @@ export const GetPostsAction = () => {
   return (dispatch) => {
     axios
       .get(`/posts`)
-      .then((resp) =>
-        dispatch({ type: "GET_POSTS", payload: resp.data.reverse() })
-      );
+      .then((resp) => dispatch({ type: "GET_POSTS", payload: resp.data }));
   };
 };
 export const getOneUserPost = (userId) => {
@@ -14,7 +12,7 @@ export const getOneUserPost = (userId) => {
     axios
       .get(`/posts/getUserId/${userId}`)
       .then((resp) =>
-        dispatch({ type: "GET_ONEUSERPOST", payload: resp.data.reverse() })
+        dispatch({ type: "GET_ONEUSERPOST", payload: resp.data })
       );
   };
 };
