@@ -16,6 +16,7 @@ import { LoginAction } from "../redux/actions/LoginActions";
 import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Fingerprint from "@mui/icons-material/Fingerprint";
 const theme = createTheme();
 
 export default function Login() {
@@ -130,7 +131,12 @@ export default function Login() {
                   />
 
                   <Button type="submit" variant="contained">
-                    Sing In
+                    Sing In{" "}
+                    <Fingerprint
+                      aria-label="fingerprint"
+                      color="secondary"
+                      className="m-2"
+                    />
                   </Button>
                 </form>
                 {/* //---------------------------------------------------------------------LOGIN FORM END------------------------------- */}

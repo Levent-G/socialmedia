@@ -35,4 +35,5 @@ export default combineReducers({
   deletefollow: FollowReducers,
   followcount: FollowReducers,
   followcounttakip: FollowReducers,
+  getsearch: UsersReducer,
 });

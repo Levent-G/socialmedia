@@ -14,6 +14,9 @@ const UsersReducer = (state = [], action) => {
       return { ...state, getoneuserlikecount: action.payload };
     case "GET_ONEUSERCOMMENTCOUNT":
       return { ...state, getoneusercommentcount: action.payload };
+    case "GET_SEARCHUSER":
+      return { ...state, getsearch: action.payload };
+
     default:
       return state;
   }

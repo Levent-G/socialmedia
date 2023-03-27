@@ -4,15 +4,16 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { GetLikesAction } from "../redux/actions/LikesAction";
 import { addLike } from "../redux/actions/LikesAction";
 import IconButton from "@mui/material/IconButton";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const LikeComp = (props) => {
   // LİKE GET START ------------------------------------------------------------------------------------------------------
   const stateLike = useSelector((stateLike) => stateLike.likes);
 
-  const dispatchLike = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatchLike(GetLikesAction());
-  }, [dispatchLike]);
+    dispatch(GetLikesAction());
+  }, [dispatch]);
 
   // LİKE GET END ------------------------------------------------------------------------------------------------------
 
@@ -25,14 +26,24 @@ const LikeComp = (props) => {
     console.log(LikeResp);
   }
   const createLike = async (body) => {
-    dispatchLike(addLike(body));
+    try {
+      dispatch(addLike(body));
+      toast.success("Like Başarılı", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } catch (error) {
+      toast.error(error, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
   // LIKLE POST END--------------------------------------------
-
+  console.log(stateLike.likes, props?.postsId, props.userId);
   return (
     <div>
       {stateLike.likes?.map((likes, index) => (
         <div key={index} className="float-left">
+          {console.log(likes, "likeeeeeeeeeeeeeeeeeeeeee")}
           {likes?.userId === props.userId &&
           likes?.postId === props?.postsId ? (
             <div>

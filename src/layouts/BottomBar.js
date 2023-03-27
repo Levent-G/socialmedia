@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getOneUserByToken } from "../redux/actions/UsersAction";
 import { sendPost } from "../redux/actions/PostActions";
+import SendIcon from "@mui/icons-material/Send";
 const style = {
   position: "absolute",
   top: "50%",
@@ -118,7 +119,7 @@ const BottomBar = () => {
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  Send Post
+                  Send Post <SendIcon />
                 </Button>
               </form>
             </Box>

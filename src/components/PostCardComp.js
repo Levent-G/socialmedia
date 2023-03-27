@@ -19,7 +19,7 @@ const PostCardComp = (props) => {
 
   return (
     <>
-      {props.state.reverse().map((posts, index) => (
+      {props.state.map((posts, index) => (
         <div key={index}>
           <Card className="m-5" sx={{ maxWidth: 755 }}>
             <div>

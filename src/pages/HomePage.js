@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { GetPostsAction } from "../redux/actions/PostActions";
 import { UsersAction } from "../redux/actions/UsersAction";
 import SearchUserPage from "../pages/SearchUserPage";
+import Divider from "@mui/material/Divider";
 const HomePage = () => {
   const token = localStorage.getItem("token");
   // GETPOST START--------------------------------------------------------------------
@@ -35,8 +36,9 @@ const HomePage = () => {
           <div className="m-5" expand="false">
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={3}>
-                <Grid>
+                <Grid className="m-5">
                   <SearchUserPage />
+                  <Divider variant="inset" />
                   <UserListComp state={stateUsers.getusers} />
                 </Grid>
                 <Grid className="text-center ml-auto mr-auto ">

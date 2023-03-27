@@ -14,6 +14,14 @@ export const getOneUser = (userId) => {
   };
 };
 
+export const searchUser = (userName) => {
+  return (dispatch) => {
+    axios
+      .get(`/users/search/${userName}`)
+      .then((resp) => dispatch({ type: "GET_SEARCHUSER", payload: resp.data }));
+  };
+};
+
 export const getOneUserByToken = () => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
