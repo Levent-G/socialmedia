@@ -23,7 +23,6 @@ const LikeComp = (props) => {
       postId: postsId,
       userId: userId,
     });
-    console.log(LikeResp);
   }
   const createLike = async (body) => {
     try {
@@ -38,12 +37,11 @@ const LikeComp = (props) => {
     }
   };
   // LIKLE POST END--------------------------------------------
-  console.log(stateLike.likes, props?.postsId, props.userId);
+
   return (
     <div>
       {stateLike.likes?.map((likes, index) => (
         <div key={index} className="float-left">
-          {console.log(likes, "likeeeeeeeeeeeeeeeeeeeeee")}
           {likes?.userId === props.userId &&
           likes?.postId === props?.postsId ? (
             <div>

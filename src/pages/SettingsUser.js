@@ -11,7 +11,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { getOneUserLikeCount } from "../redux/actions/UsersAction";
 import SendIcon from "@mui/icons-material/Send";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { getOneUserByToken } from "../redux/actions/UsersAction";
 import { updateUser } from "../redux/actions/UsersAction";
 
@@ -68,7 +69,7 @@ const SettingsUser = () => {
   const [settingUserName, setSettingUserName] = useState(null);
   const [settingEmail, setSettingEmail] = useState(null);
   const [settingAvatarUrl, setSettingAvatarUrl] = useState(null);
-
+  const [settingPassword, setSettingPassword] = useState(null);
   const [settingMessage, setSettingMessage] = useState(null);
 
   const token = localStorage.getItem("token");
@@ -83,12 +84,13 @@ const SettingsUser = () => {
   const updateOneUserApi = async (body) => {
     try {
       dispatch(updateUser(state.getoneuserstoken?.id, body));
-      console.log(
-        state.loginUser,
-        "askjdlkasjdlksjakdjaslkdjasdlkjasdkljsadlkjsadlkjaklkasjdlk"
-      );
+      toast.success("Update Başarılı", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     } catch {
-      console.log("Login Başarısız!!!!!");
+      toast.error("Update Başarısız", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
   };
   const settingFunction = async (e) => {
@@ -100,6 +102,7 @@ const SettingsUser = () => {
       email: settingEmail,
       message: settingMessage,
       accessToken: token,
+      password: settingPassword,
     });
     console.log(resp);
   };
@@ -137,7 +140,7 @@ const SettingsUser = () => {
         <Tab label="Avatar Url Change" {...a11yProps(2)} />
         <Tab label="Message Change" {...a11yProps(3)} />
         <Tab label="Like Count" {...a11yProps(4)} />
-        <Tab label="Item Six" {...a11yProps(5)} />
+        <Tab label="Password Change" {...a11yProps(5)} />
         <Tab label="Item Seven" {...a11yProps(6)} />
       </Tabs>
 
@@ -148,10 +151,11 @@ const SettingsUser = () => {
               value={settingUserName}
               margin="normal"
               fullWidth
-              name="userName"
-              label="User Name"
-              type="text"
               id="userName"
+              label="User Name"
+              name="text"
+              autoComplete="userName"
+              autoFocus
               onChange={(e) => setSettingUserName(e.target.value)}
             />
             <div className="mt-3 mb-2  float-left">
@@ -316,7 +320,44 @@ const SettingsUser = () => {
           </IconButton>
         </TabPanel>
         <TabPanel value={value} index={5}>
-          Item Six
+          <form onSubmit={settingFunction}>
+            <TextField
+              value={settingPassword}
+              margin="normal"
+              fullWidth
+              name="password"
+              label="password"
+              type="password"
+              id="password"
+              onChange={(e) => setSettingPassword(e.target.value)}
+            />
+            <div className="mt-3 mb-2  float-left">
+              <Button
+                variant="contained"
+                aria-describedby={id}
+                type="button"
+                onClick={handleClick}
+              >
+                Last Password
+              </Button>
+              <Popper id={id} open={open} anchorEl={anchorEl}>
+                <Box sx={{ border: 1, p: 1, bgcolor: "background.paper" }}>
+                  {state.getoneuserstoken?.password}
+                </Box>
+              </Popper>
+            </div>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="success"
+              size="small"
+              endIcon={<SendIcon />}
+              sx={{ mt: 3, mb: 2, width: "250px", float: "right" }}
+            >
+              Send
+            </Button>
+          </form>
         </TabPanel>
         <TabPanel value={value} index={6}>
           Item Seven

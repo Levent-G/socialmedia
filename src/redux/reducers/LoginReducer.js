@@ -3,7 +3,7 @@ const LoginReducer = (state = [], action) => {
     case "POST_LOGIN":
       return { ...state, loginUser: action.payload };
     case "PUT_LOGOUT":
-      return { ...state, logoutuser: action.payload };
+      return { getoneuserstoken: null };
     case "POST_SIGNUP":
       return { ...state, signupuser: action.payload };
 

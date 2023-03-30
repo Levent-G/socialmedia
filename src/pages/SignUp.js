@@ -19,6 +19,7 @@ const theme = createTheme();
 const SignUp = () => {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [Repeatpassword, setRepeatpassword] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -41,13 +42,19 @@ const SignUp = () => {
   };
   const signUpFunction = async (e) => {
     e.preventDefault();
-    await createUserApi({
-      userName: userName,
-      password: password,
-      avatarUrl: avatarUrl,
-      email: email,
-      message: message,
-    });
+    if (Repeatpassword === password) {
+      await createUserApi({
+        userName: userName,
+        password: password,
+        avatarUrl: avatarUrl,
+        email: email,
+        message: message,
+      });
+    } else {
+      toast.error("Şifreyi Tekrar giriniz", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
   console.log(state.signupuser);
   return (
@@ -120,6 +127,7 @@ const SignUp = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <TextField
+              value={Repeatpassword}
               margin="normal"
               required
               fullWidth
@@ -128,6 +136,7 @@ const SignUp = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e) => setRepeatpassword(e.target.value)}
             />
             <TextField
               value={message}

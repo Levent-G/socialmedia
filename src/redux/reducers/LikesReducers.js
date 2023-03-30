@@ -1,5 +1,6 @@
 const initialState = {
   likes: [],
+  postlikes: [],
 };
 const LikesReducers = (state = initialState, action) => {
   switch (action.type) {

@@ -41,12 +41,21 @@ export default function Login() {
   const loginFunction = async (e) => {
     e.preventDefault();
     try {
+      console.log(email, password);
       await loginFunctionApi({ email, password });
-      toast.success("Login Başarılı", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+
       await localStorage.setItem("token", state.loginUser.accessToken);
-      navigate("/homepage");
+      if (state.loginUser) {
+        toast.success("Login Başarılı", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+
+        navigate("/homepage");
+      } else {
+        toast.error("Login Başarısız", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
     } catch (error) {
       toast.error(error, {
         position: toast.POSITION.TOP_RIGHT,

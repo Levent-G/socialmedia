@@ -160,7 +160,7 @@ const Topbar = () => {
                   variant="contained"
                   color="error"
                   onClick={logout}
-                  className="ml-9"
+                  className="ml-9 float-right"
                   size="small"
                 >
                   Exit

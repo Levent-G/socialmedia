@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import List from "@mui/material/List";
+
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
@@ -24,7 +24,6 @@ const SearchUserPage = () => {
 
     try {
       dispatch(searchUser(searchUserName));
-      console.log("searchhhaaaaaaaaaaaaa");
       toast.success("User Getirildi", {
         position: toast.POSITION.TOP_RIGHT,
       });
@@ -46,16 +45,16 @@ const SearchUserPage = () => {
 
     return () => clearTimeout(timeoutId);
   }, []);
-  console.log(state.getsearch, "searchhh");
+
   return (
     <div>
-      <form onSubmit={searchFunction}>
+      <form onSubmit={searchFunction} className="p-10">
         <TextField
           value={searchUserName}
           margin="normal"
           required
-          fullWidth
           id="title"
+          fullWidth
           label="UserName Giriniz"
           onChange={(e) => setSearchUserName(e.target.value)}
         />
