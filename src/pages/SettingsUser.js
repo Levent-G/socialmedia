@@ -87,8 +87,8 @@ const SettingsUser = () => {
       toast.success("Update Başarılı", {
         position: toast.POSITION.TOP_RIGHT,
       });
-    } catch {
-      toast.error("Update Başarısız", {
+    } catch (error) {
+      toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
     }

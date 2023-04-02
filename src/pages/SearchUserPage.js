@@ -28,8 +28,8 @@ const SearchUserPage = () => {
         position: toast.POSITION.TOP_RIGHT,
       });
       setSearchControl(true);
-    } catch {
-      toast.error("error", {
+    } catch (error) {
+      toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setSearchControl(false);

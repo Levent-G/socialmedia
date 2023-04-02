@@ -36,8 +36,8 @@ const Follow = (props) => {
       toast.success("Takip isteği atıldı", {
         position: toast.POSITION.TOP_RIGHT,
       });
-    } catch {
-      toast.error("Takip isteği atılamadı", {
+    } catch (error) {
+      toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
     }

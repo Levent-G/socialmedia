@@ -1,18 +1,29 @@
 import axios from "axios";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const GetLikesAction = () => {
   return (dispatch) => {
-    //api call
-    //dispatch({type:" GET USER", payload:resp.data})
-    axios
-      .get(`/like`)
-      .then((resp) => dispatch({ type: "GET_LIKES", payload: resp.data }));
+    try {
+      axios
+        .get(`/like`)
+        .then((resp) => dispatch({ type: "GET_LIKES", payload: resp.data }));
+    } catch (error) {
+      toast.error(error.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
 };
 export const addLike = (body) => {
   return (dispatch) => {
-    axios
-      .post(`/like`, body)
-      .then((resp) => dispatch({ type: "POST_LIKE", payload: resp.data }));
+    try {
+      axios
+        .post(`/like`, body)
+        .then((resp) => dispatch({ type: "POST_LIKE", payload: resp.data }));
+    } catch (error) {
+      toast.error(error.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
 };

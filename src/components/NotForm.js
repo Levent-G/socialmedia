@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 const NotForm = (props) => {
   const [notBaslik, setNotBaslik] = useState("");
   const [notAciklama, setNotAciklama] = useState("");
+
   const tarih = Date.now();
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {

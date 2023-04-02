@@ -31,7 +31,7 @@ const LikeComp = (props) => {
         position: toast.POSITION.TOP_RIGHT,
       });
     } catch (error) {
-      toast.error(error, {
+      toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
     }
