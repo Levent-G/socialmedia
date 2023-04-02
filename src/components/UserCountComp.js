@@ -59,7 +59,6 @@ const UserCountComp = (props) => {
       dispatch(getFollowCountTakip(userId));
     }
   }, [userId, dispatch]);
-  console.log("userid", userId, "count", stateFollowCount.followcount);
 
   return (
     <div>

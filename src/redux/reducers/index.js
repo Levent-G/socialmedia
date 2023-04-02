@@ -7,7 +7,7 @@ import PostReducer from "../reducers/PostReducer";
 import ShareReducers from "../reducers/ShareReducers";
 import CommentReducers from "../reducers/CommentReducers";
 import FollowReducers from "../reducers/FollowReducers";
-
+import NotesReducers from "../reducers/NotesReducers";
 export default combineReducers({
   loginUser: LoginReducer,
   getusers: UsersReducer,
@@ -36,4 +36,5 @@ export default combineReducers({
   followcount: FollowReducers,
   followcounttakip: FollowReducers,
   getsearch: UsersReducer,
+  notes: NotesReducers,
 });

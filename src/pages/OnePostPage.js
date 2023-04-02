@@ -43,19 +43,19 @@ const OnePostPage = () => {
               alt="Paella dish"
             />
             <Link
-              to={`/getoneuser/${state.onepost?.user.userId}`}
+              to={`/getoneuser/${state.onepost.user?.userId}`}
               variant="body2"
             >
               <ListItemAvatar>
                 <Avatar
-                  alt={state.onepost?.user.userName}
-                  src={state.onepost?.user.avatarUrl}
+                  alt={state.onepost.user?.userName}
+                  src={state.onepost.user?.avatarUrl}
                   className="float-left m-2"
                 />
               </ListItemAvatar>
             </Link>
             <Typography className=" float-left pt-5">
-              {state.onepost?.user.userName}
+              {state.onepost.user?.userName}
             </Typography>
             <Typography className="text-gray-400 float-right ">
               {state.onepost?.createdAt}

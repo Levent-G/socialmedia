@@ -8,6 +8,7 @@ const LikesReducers = (state = initialState, action) => {
       return { ...state, likes: action.payload };
     case "POST_LIKE":
       return { ...state, likes: [...state.likes, action.payload] };
+
     default:
       return state;
   }

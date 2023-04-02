@@ -61,6 +61,7 @@ const BottomBar = () => {
       createdAt: createdAt,
     });
   };
+
   return (
     <div>
       {token ? (

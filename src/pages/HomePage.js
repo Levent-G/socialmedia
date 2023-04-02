@@ -42,7 +42,6 @@ const HomePage = () => {
                   <UserListComp state={stateUsers.getusers} />
                 </Grid>
                 <Grid className="text-center ml-auto mr-auto ">
-                  {console.log(state.posts, "posts")}
                   <PostCardComp
                     state={state.posts}
                     tokenUser={stateUser.getoneuserstoken}

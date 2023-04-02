@@ -75,10 +75,7 @@ const Follow = (props) => {
           </>
         </div>
       ))}
-      {console.log(
-        state.followcontrol,
-        "folowwwwwwwssssssssssssssssssssssssss"
-      )}
+
       {state.followcontrol?.length === 0 ? (
         <>
           <Button
