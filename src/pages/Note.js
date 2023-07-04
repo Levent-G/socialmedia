@@ -25,21 +25,36 @@ const Note = (props) => {
         ) : (
           ""
         )}
-        <Typography variant="h5" className=" pb-5 bg-orange-200 w-96 p-5">
-          {props.userName} NOTE
-        </Typography>
+
         <Grid>
-          {state.notes?.map((note, index) => (
-            <div key={index}>
-              <Grid>
-                <NoteCardComp
-                  notes={note}
-                  girisYapan={props.girisYapan}
-                  userIdParam={props.userIdParam}
-                />
-              </Grid>
+          {state.notes.length > 0 ? (
+            <>
+              <Typography variant="h5" className=" pb-5 bg-orange-200 w-96 p-5">
+                {props.userName} NOTE
+              </Typography>
+              {state.notes?.map((note, index) => (
+                <div key={index}>
+                  <Grid>
+                    <NoteCardComp
+                      notes={note}
+                      girisYapan={props.girisYapan}
+                      userIdParam={props.userIdParam}
+                    />
+                  </Grid>
+                </div>
+              ))}
+            </>
+          ) : (
+            <div className="w-80 p-5 text-white bg-red-500">
+              <h3>
+                {" "}
+                <p className="text-black font-bold float-left mr-2 text-2xl">
+                  {props.userName}
+                </p>
+                Not Eklememiş !
+              </h3>
             </div>
-          ))}
+          )}
         </Grid>
       </Box>
     </div>

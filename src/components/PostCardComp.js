@@ -51,7 +51,11 @@ const PostCardComp = (props) => {
               <br />
             </div>
             <div className="float-left">
-              <LikeComp postsId={posts?.id} userId={props.tokenUser?.id} />
+              <LikeComp
+                postsId={posts?.id}
+                userId={props.tokenUser?.id}
+                countLike={posts?.countLike}
+              />
             </div>
             <div className="float-left">
               <ShareComp

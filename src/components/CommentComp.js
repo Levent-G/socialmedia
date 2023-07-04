@@ -35,7 +35,7 @@ const CommentComp = (props) => {
   const commentPostApi = async (body) => {
     try {
       dispatch(commentPost(body));
-      toast.success("Post Başarılı", {
+      toast.success("Comment Başarılı", {
         position: toast.POSITION.TOP_RIGHT,
       });
     } catch (error) {
@@ -70,8 +70,8 @@ const CommentComp = (props) => {
           </Button>
         </FormControl>
       </Box>
-      {state.comments?.map((comments) => (
-        <>
+      {state.comments?.map((comments, index) => (
+        <div key={index}>
           {comments?.postId === props?.postsId ? (
             <div>
               <Avatar
@@ -89,7 +89,7 @@ const CommentComp = (props) => {
           ) : (
             ""
           )}
-        </>
+        </div>
       ))}
     </div>
   );

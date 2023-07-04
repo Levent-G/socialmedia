@@ -18,6 +18,7 @@ const PostReducers = (state = initialState, action) => {
       return { ...state, posts: [...state.posts, action.payload] };
     case "GET_ONEPOST":
       return { ...state, onepost: action.payload };
+
     default:
       return state;
   }

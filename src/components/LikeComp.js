@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { GetLikesAction } from "../redux/actions/LikesAction";
 import { addLike } from "../redux/actions/LikesAction";
+
 import IconButton from "@mui/material/IconButton";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +12,7 @@ const LikeComp = (props) => {
   const stateLike = useSelector((stateLike) => stateLike.likes);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(GetLikesAction());
   }, [dispatch]);
@@ -44,21 +46,31 @@ const LikeComp = (props) => {
         <div key={index} className="float-left">
           {likes?.userId === props.userId &&
           likes?.postId === props?.postsId ? (
-            <div>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon className="text-red-600 " />
-              </IconButton>
-            </div>
+            <IconButton aria-label="add to favorites">
+              <p className="font-bold float-left text-black">
+                {props.countLike}
+              </p>{" "}
+              <FavoriteIcon className="text-red-600 " />
+            </IconButton>
           ) : (
             ""
           )}
         </div>
       ))}
+
       <IconButton
         aria-label="add to favorites"
         onClick={() => likeFunction(props?.postsId, props.userId)}
       >
-        <FavoriteIcon />
+        {props.countLike > 0 ? (
+          <>
+            {" "}
+            <p className="font-bold float-left text-black">{props.countLike}</p>
+            <FavoriteIcon />
+          </>
+        ) : (
+          <FavoriteIcon />
+        )}{" "}
       </IconButton>
     </div>
   );

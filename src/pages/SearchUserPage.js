@@ -24,10 +24,17 @@ const SearchUserPage = () => {
 
     try {
       dispatch(searchUser(searchUserName));
-      toast.success("User Getirildi", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-      setSearchControl(true);
+      if (state.getsearch) {
+        toast.success("User Getirildi", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        setSearchControl(true);
+      } else {
+        toast.error("User Bulunamadı", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        setSearchControl(false);
+      }
     } catch (error) {
       toast.error(error.message, {
         position: toast.POSITION.TOP_RIGHT,

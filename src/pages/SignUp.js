@@ -150,6 +150,7 @@ const SignUp = () => {
               autoFocus
               onChange={(e) => setMessage(e.target.value)}
             />
+
             <Button
               type="submit"
               fullWidth

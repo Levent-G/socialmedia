@@ -39,14 +39,7 @@ const LeftBar = () => {
       className="bg-blue-500 text-white h-full"
     >
       <List>
-        {[
-          "Homepage",
-          "Product List",
-          "Product Table",
-          "Category ",
-          "Search Category",
-          "Past Sales Chart",
-        ].map((text, index) => (
+        {["Homepage"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon className="text-white">
@@ -59,7 +52,7 @@ const LeftBar = () => {
       </List>
       <Divider />
       <List>
-        {["Product List", "Search", "Profil"].map((text, index) => (
+        {["Search", "Profil"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon className="text-white">
